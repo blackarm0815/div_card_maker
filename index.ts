@@ -1,9 +1,10 @@
 interface SquareData {
   border: number;
+  cardName: string;
   squareSide: number;
-  statNetwork: number | null;
-  statPower: number | null;
-  statSpace: number | null;
+  statApple: number | null;
+  statBanana: number | null;
+  statCarrot: number | null;
   sysId: string;
 }
 //
@@ -11,17 +12,37 @@ const drawSquareDefault = (
   squareData: SquareData,
 ) => {
   //
+  const calculateCssClass = (
+    floatingPoint: number,
+  ) => {
+    if (floatingPoint < 0.25) {
+      return 'spectrumA';
+    }
+    if (floatingPoint < 0.5) {
+      return 'spectrumB';
+    }
+    if (floatingPoint < 0.75) {
+      return 'spectrumC';
+    }
+    return 'spectrumD';
+  };
+  //
   let divBlack: HTMLDivElement | null = null;
   let divFrame: HTMLDivElement | null = null;
-  let divNetwork: HTMLDivElement | null = null;
-  let divNetworkHeight = 0;
-  let divNetworkTop = 0;
-  let divPower: HTMLDivElement | null = null;
-  let divPowerHeight = 0;
-  let divPowerTop = 0;
-  let divSpace: HTMLDivElement | null = null;
-  let divSpaceHeight = 0;
-  let divSpaceTop = 0;
+  let divApple: HTMLDivElement | null = null;
+  let divAppleHeight = 0;
+  let divAppleTop = 0;
+  let divBanana: HTMLDivElement | null = null;
+  let divBananaHeight = 0;
+  let divBananaTop = 0;
+  let divCardTitle: HTMLDivElement | null = null;
+  let divCarrot: HTMLDivElement | null = null;
+  let divCarrotHeight = 0;
+  let divCarrotTop = 0;
+  let fontSize = 0;
+  //
+  // calculate font size
+  fontSize = Math.ceil(squareData.squareSide * 0.1);
   //
   //
   // the square div that contains everything and is returned at the end of the function
@@ -37,7 +58,7 @@ const drawSquareDefault = (
   // this does not have to be a style rule for all overlays
   divBlack = document.createElement('div');
   divBlack.id = `divBlack_${squareData.sysId}`;
-  divBlack.style.backgroundColor = 'black';
+  divBlack.className = 'blackBackground';
   divBlack.style.height = '100%';
   divBlack.style.left = '0%';
   divBlack.style.position = 'absolute';
@@ -45,81 +66,93 @@ const drawSquareDefault = (
   divBlack.style.width = '100%';
   divFrame.appendChild(divBlack);
   //
-  // if network data exists, draw a bar
-  if (squareData.statNetwork !== null) {
+  // card title
+  divCardTitle = document.createElement('div');
+  divCardTitle.id = `divTitle_${squareData.sysId}`;
+  divCardTitle.className = 'whiteText';
+  divCardTitle.style.left = '5%';
+  divCardTitle.style.position = 'absolute';
+  divCardTitle.style.top = '2%';
+  divCardTitle.style.fontSize = `${fontSize}px`;
+  divCardTitle.style.fontFamily = 'monospace';
+  divCardTitle.innerText = squareData.cardName;
+  divFrame.appendChild(divCardTitle);
+  //
+  // if apple data exists, draw a bar
+  if (squareData.statApple !== null) {
     //
-    divNetworkHeight = Math.ceil(90 * squareData.statNetwork);
-    divNetworkTop = 95 - divNetworkHeight;
+    divAppleHeight = Math.ceil(75 * squareData.statApple);
+    divAppleTop = 95 - divAppleHeight;
     //
-    divNetwork = document.createElement('div');
-    divNetwork.id = `divNetwork_${squareData.sysId}`;
-    divNetwork.style.backgroundColor = 'blue';
-    divNetwork.style.height = `${divNetworkHeight}%`;
-    divNetwork.style.left = '5%';
-    divNetwork.style.position = 'absolute';
-    divNetwork.style.top = `${divNetworkTop}%`;
-    divNetwork.style.width = '26%';
-    divFrame.appendChild(divNetwork);
+    divApple = document.createElement('div');
+    divApple.id = `divApple_${squareData.sysId}`;
+    divApple.className = calculateCssClass(squareData.statApple);
+    divApple.style.height = `${divAppleHeight}%`;
+    divApple.style.left = '5%';
+    divApple.style.position = 'absolute';
+    divApple.style.top = `${divAppleTop}%`;
+    divApple.style.width = '26%';
+    divFrame.appendChild(divApple);
   }
   //
-  // if power data exists, draw a bar
-  if (squareData.statPower !== null) {
-    divPowerHeight = Math.ceil(90 * squareData.statPower);
-    divPowerTop = 95 - divPowerHeight;
+  // if banana data exists, draw a bar
+  if (squareData.statBanana !== null) {
     //
-    divPower = document.createElement('div');
-    divPower.id = `divPower_${squareData.sysId}`;
-    divPower.style.backgroundColor = 'green';
-    divPower.style.height = `${divPowerHeight}%`;
-    divPower.style.left = '37%';
-    divPower.style.position = 'absolute';
-    divPower.style.top = `${divPowerTop}%`;
-    divPower.style.width = '26%';
-    divFrame.appendChild(divPower);
+    divBananaHeight = Math.ceil(75 * squareData.statBanana);
+    divBananaTop = 95 - divBananaHeight;
+    //
+    divBanana = document.createElement('div');
+    divBanana.id = `divBanana_${squareData.sysId}`;
+    divBanana.className = calculateCssClass(squareData.statBanana);
+    divBanana.style.height = `${divBananaHeight}%`;
+    divBanana.style.left = '37%';
+    divBanana.style.position = 'absolute';
+    divBanana.style.top = `${divBananaTop}%`;
+    divBanana.style.width = '26%';
+    divFrame.appendChild(divBanana);
   }
   //
-  // if space data exists, draw a bar
-  if (squareData.statSpace !== null) {
-    divSpaceHeight = Math.ceil(90 * squareData.statSpace);
-    divSpaceTop = 95 - divSpaceHeight;
+  // if carrot data exists, draw a bar
+  if (squareData.statCarrot !== null) {
     //
-    divSpace = document.createElement('div');
-    divSpace.id = `divSpace_${squareData.sysId}`;
-    divSpace.style.backgroundColor = 'red';
-    divSpace.style.height = `${divSpaceHeight}%`;
-    divSpace.style.left = '69%';
-    divSpace.style.position = 'absolute';
-    divSpace.style.top = `${divSpaceTop}%`;
-    divSpace.style.width = '26%';
-    divFrame.appendChild(divSpace);
+    divCarrotHeight = Math.ceil(75 * squareData.statCarrot);
+    divCarrotTop = 95 - divCarrotHeight;
+    //
+    divCarrot = document.createElement('div');
+    divCarrot.id = `divCarrot_${squareData.sysId}`;
+    divCarrot.className = calculateCssClass(squareData.statCarrot);
+    divCarrot.style.height = `${divCarrotHeight}%`;
+    divCarrot.style.left = '69%';
+    divCarrot.style.position = 'absolute';
+    divCarrot.style.top = `${divCarrotTop}%`;
+    divCarrot.style.width = '26%';
+    divFrame.appendChild(divCarrot);
   }
   return divFrame;
 };
 //
 const main = () => {
   //
-  const border = 100;
-  const squareSide = 1800;
-  //
-  const spongebob = document.getElementById('spongebob');
-  if (spongebob !== null) {
+  const divHolder = document.getElementById('holder_abcdefg');
+  if (divHolder !== null) {
     //
     // generate the square report
     const report = drawSquareDefault({
-      border,
-      statNetwork: 0.8,
-      statPower: 0.6,
-      statSpace: 0.4,
-      squareSide,
-      sysId: 'abcdefghijk',
+      border: 100,
+      cardName: 'CARD0101',
+      statApple: Math.random(),
+      statBanana: Math.random(),
+      statCarrot: Math.random(),
+      squareSide: 1800,
+      sysId: 'abcdefg',
     });
     //
-    // adjust the square report to work with borders
-    report.style.left = `${border}px`;
-    report.style.top = `${border}px`;
+    // give it a bit of space
+    report.style.left = '100px';
+    report.style.top = '100px';
     //
-    // attach the report to the webpage
-    spongebob.appendChild(report);
+    // attach the report div to the DOM
+    divHolder.appendChild(report);
   }
 };
 //
