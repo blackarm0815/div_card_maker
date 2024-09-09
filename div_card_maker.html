@@ -9,11 +9,7 @@
     left: 2000px;
     top: 350px;
 }
-
-.gojira {
-  transition-duration: 500ms;
-  transition-property: background-color, height, top;
-}  </style>
+  </style>
 </head>
 <body>
 <div id = 'divMain'></div>
@@ -22,15 +18,15 @@
 //
 var drawSquareDefault = function (squareData) {
   //
-  var divBlack = null;
-  var divFrame = null;
-  var divApple = null;
+  var divAppleBar = null;
   var divAppleTitle = null;
-  var divBanana = null;
   var divBananaTitle = null;
+  var divBananaBar = null;
+  var divBlack = null;
   var divCardTitle = null;
-  var divCarrot = null;
+  var divCarrotBar = null;
   var divCarrotTitle = null;
+  var divFrame = null;
   var fontSize = 0;
   //
   // calculate font size
@@ -58,7 +54,7 @@ var drawSquareDefault = function (squareData) {
   //
   // card title
   divCardTitle = document.createElement('div');
-  divCardTitle.id = "divTitle_".concat(squareData.sysId);
+  divCardTitle.id = "divCardTitle_".concat(squareData.sysId);
   divCardTitle.style.color = 'white';
   divCardTitle.style.left = '5%';
   divCardTitle.style.position = 'absolute';
@@ -68,9 +64,9 @@ var drawSquareDefault = function (squareData) {
   divCardTitle.innerText = squareData.cardName;
   divFrame.appendChild(divCardTitle);
   //
-  // apple message
+  // apple title
   divAppleTitle = document.createElement('div');
-  divAppleTitle.id = "divMessageApple_".concat(squareData.sysId);
+  divAppleTitle.id = "divAppleTitle_".concat(squareData.sysId);
   divAppleTitle.style.color = 'white';
   divAppleTitle.className = 'whiteText';
   divAppleTitle.style.left = '5%';
@@ -82,20 +78,21 @@ var drawSquareDefault = function (squareData) {
   divFrame.appendChild(divAppleTitle);
   //
   // apple bar
-  divApple = document.createElement('div');
-  divApple.id = "divApple_".concat(squareData.sysId);
-  divApple.classList.add('gojira');
-  divApple.style.backgroundColor = '#000000';
-  divApple.style.height = '5%';
-  divApple.style.left = '5%';
-  divApple.style.position = 'absolute';
-  divApple.style.top = '85%';
-  divApple.style.width = '26%';
-  divFrame.appendChild(divApple);
+  divAppleBar = document.createElement('div');
+  divAppleBar.id = "divAppleBar_".concat(squareData.sysId);
+  divAppleBar.style.backgroundColor = '#000000';
+  divAppleBar.style.height = '5%';
+  divAppleBar.style.left = '5%';
+  divAppleBar.style.position = 'absolute';
+  divAppleBar.style.top = '85%';
+  divAppleBar.style.width = '26%';
+  divAppleBar.style.transitionDuration = '500ms';
+  divAppleBar.style.transitionProperty = 'background-color, height, top';
+  divFrame.appendChild(divAppleBar);
   //
-  // banana message
+  // banana title
   divBananaTitle = document.createElement('div');
-  divBananaTitle.id = "divMessageBanana_".concat(squareData.sysId);
+  divBananaTitle.id = "divBananaTitle_".concat(squareData.sysId);
   divBananaTitle.style.color = 'white';
   divBananaTitle.style.left = '37%';
   divBananaTitle.style.position = 'absolute';
@@ -106,20 +103,21 @@ var drawSquareDefault = function (squareData) {
   divFrame.appendChild(divBananaTitle);
   //
   // banana bar
-  divBanana = document.createElement('div');
-  divBanana.id = "divBanana_".concat(squareData.sysId);
-  divBanana.classList.add('gojira');
-  divBanana.style.backgroundColor = '#000000';
-  divBanana.style.height = '5%';
-  divBanana.style.left = '37%';
-  divBanana.style.position = 'absolute';
-  divBanana.style.top = '85%';
-  divBanana.style.width = '26%';
-  divFrame.appendChild(divBanana);
+  divBananaBar = document.createElement('div');
+  divBananaBar.id = "divBananaBar_".concat(squareData.sysId);
+  divBananaBar.style.backgroundColor = '#000000';
+  divBananaBar.style.height = '5%';
+  divBananaBar.style.left = '37%';
+  divBananaBar.style.position = 'absolute';
+  divBananaBar.style.top = '85%';
+  divBananaBar.style.width = '26%';
+  divBananaBar.style.transitionDuration = '500ms';
+  divBananaBar.style.transitionProperty = 'background-color, height, top';
+  divFrame.appendChild(divBananaBar);
   //
-  // carrot message
+  // carrot title
   divCarrotTitle = document.createElement('div');
-  divCarrotTitle.id = "divMessageCarrot_".concat(squareData.sysId);
+  divCarrotTitle.id = "divCarrotTitle_".concat(squareData.sysId);
   divCarrotTitle.style.color = 'white';
   divCarrotTitle.style.left = '69%';
   divCarrotTitle.style.position = 'absolute';
@@ -130,16 +128,17 @@ var drawSquareDefault = function (squareData) {
   divFrame.appendChild(divCarrotTitle);
   //
   // carrot bar
-  divCarrot = document.createElement('div');
-  divCarrot.id = "divCarrot_".concat(squareData.sysId);
-  divCarrot.classList.add('gojira');
-  divCarrot.style.backgroundColor = '#000000';
-  divCarrot.style.height = '5%';
-  divCarrot.style.left = '69%';
-  divCarrot.style.position = 'absolute';
-  divCarrot.style.top = '85%';
-  divCarrot.style.width = '26%';
-  divFrame.appendChild(divCarrot);
+  divCarrotBar = document.createElement('div');
+  divCarrotBar.id = "divCarrotBar_".concat(squareData.sysId);
+  divCarrotBar.style.backgroundColor = '#000000';
+  divCarrotBar.style.height = '5%';
+  divCarrotBar.style.left = '69%';
+  divCarrotBar.style.position = 'absolute';
+  divCarrotBar.style.top = '85%';
+  divCarrotBar.style.transitionDuration = '500ms';
+  divCarrotBar.style.transitionProperty = 'background-color, height, top';
+  divCarrotBar.style.width = '26%';
+  divFrame.appendChild(divCarrotBar);
   //
   return divFrame;
 };
@@ -159,73 +158,73 @@ var updateStats = function (sysId, appleFloat, bananaFloat, carrotFloat) {
   //
   var divFrame = null;
   //
-  var divApple = null;
-  var divAppleHeight = 0;
-  var divAppleTop = 0;
+  var divAppleBar = null;
+  var divAppleBarHeight = 0;
+  var divAppleBarTop = 0;
   //
-  var divBanana = null;
-  var divBananaHeight = 0;
-  var divBananaTop = 0;
+  var divBananaBar = null;
+  var divBananaBarHeight = 0;
+  var divBananaBarTop = 0;
   //
-  var divCarrot = null;
-  var divCarrotHeight = 0;
-  var divCarrotTop = 0;
+  var divCarrotBar = null;
+  var divCarrotBarHeight = 0;
+  var divCarrotBarTop = 0;
   //
   var targetColor = '';
   //
   divFrame = document.getElementById("divFrame_".concat(sysId));
   if (divFrame !== null) {
     //
-    divApple = document.getElementById("divApple_".concat(sysId));
-    if (divApple !== null) {
+    divAppleBar = document.getElementById("divAppleBar_".concat(sysId));
+    if (divAppleBar !== null) {
       // default big blue bar means there was a null
-      divAppleHeight = 70;
-      divAppleTop = 20;
+      divAppleBarHeight = 70;
+      divAppleBarTop = 20;
       targetColor = 'blue';
       if (appleFloat !== null) {
         // calculate size and color
-        divAppleHeight = Math.ceil(70 * appleFloat);
-        divAppleTop = 90 - divAppleHeight;
+        divAppleBarHeight = Math.ceil(70 * appleFloat);
+        divAppleBarTop = 90 - divAppleBarHeight;
         targetColor = calculateColor(appleFloat);
       }
-      divApple.style.backgroundColor = targetColor;
-      divApple.style.height = "".concat(divAppleHeight, "%");
-      divApple.style.top = "".concat(divAppleTop, "%");
+      divAppleBar.style.backgroundColor = targetColor;
+      divAppleBar.style.height = "".concat(divAppleBarHeight, "%");
+      divAppleBar.style.top = "".concat(divAppleBarTop, "%");
     }
     //
-    divBanana = document.getElementById("divBanana_".concat(sysId));
-    if (divBanana !== null) {
+    divBananaBar = document.getElementById("divBananaBar_".concat(sysId));
+    if (divBananaBar !== null) {
       // default big blue bar means there was a null
-      divBananaHeight = 70;
-      divBananaTop = 20;
+      divBananaBarHeight = 70;
+      divBananaBarTop = 20;
       targetColor = 'blue';
       if (bananaFloat !== null) {
         // calculate size and color
-        divBananaHeight = Math.ceil(70 * bananaFloat);
-        divBananaTop = 90 - divBananaHeight;
+        divBananaBarHeight = Math.ceil(70 * bananaFloat);
+        divBananaBarTop = 90 - divBananaBarHeight;
         targetColor = calculateColor(bananaFloat);
       }
-      divBanana.style.backgroundColor = targetColor;
-      divBanana.style.height = "".concat(divBananaHeight, "%");
-      divBanana.style.top = "".concat(divBananaTop, "%");
+      divBananaBar.style.backgroundColor = targetColor;
+      divBananaBar.style.height = "".concat(divBananaBarHeight, "%");
+      divBananaBar.style.top = "".concat(divBananaBarTop, "%");
     }
     //
-    divCarrot = document.getElementById("divCarrot_".concat(sysId));
-    if (divCarrot !== null) {
+    divCarrotBar = document.getElementById("divCarrotBar_".concat(sysId));
+    if (divCarrotBar !== null) {
       // default big blue bar means there was a null
-      divCarrotHeight = 70;
-      divCarrotTop = 20;
+      divCarrotBarHeight = 70;
+      divCarrotBarTop = 20;
       targetColor = 'blue';
       if (carrotFloat !== null) {
         // calculate size and color
-        divCarrotHeight = Math.ceil(70 * carrotFloat);
-        divCarrotTop = 90 - divCarrotHeight;
+        divCarrotBarHeight = Math.ceil(70 * carrotFloat);
+        divCarrotBarTop = 90 - divCarrotBarHeight;
         targetColor = calculateColor(carrotFloat);
       }
+      divCarrotBar.style.backgroundColor = targetColor;
+      divCarrotBar.style.height = "".concat(divCarrotBarHeight, "%");
+      divCarrotBar.style.top = "".concat(divCarrotBarTop, "%");
     }
-    divCarrot.style.backgroundColor = targetColor;
-    divCarrot.style.height = "".concat(divCarrotHeight, "%");
-    divCarrot.style.top = "".concat(divCarrotTop, "%");
   }
 };
 var createNumberNull = function () {

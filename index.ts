@@ -8,15 +8,15 @@ const drawSquareDefault = (
   squareData: SquareData,
 ) => {
   //
-  let divBlack: HTMLDivElement | null = null;
-  let divFrame: HTMLDivElement | null = null;
-  let divApple: HTMLDivElement | null = null;
+  let divAppleBar: HTMLDivElement | null = null;
   let divAppleTitle: HTMLDivElement | null = null;
-  let divBanana: HTMLDivElement | null = null;
   let divBananaTitle: HTMLDivElement | null = null;
+  let divBananaBar: HTMLDivElement | null = null;
+  let divBlack: HTMLDivElement | null = null;
   let divCardTitle: HTMLDivElement | null = null;
-  let divCarrot: HTMLDivElement | null = null;
+  let divCarrotBar: HTMLDivElement | null = null;
   let divCarrotTitle: HTMLDivElement | null = null;
+  let divFrame: HTMLDivElement | null = null;
   let fontSize = 0;
   //
   // calculate font size
@@ -44,7 +44,7 @@ const drawSquareDefault = (
   //
   // card title
   divCardTitle = document.createElement('div');
-  divCardTitle.id = `divTitle_${squareData.sysId}`;
+  divCardTitle.id = `divCardTitle_${squareData.sysId}`;
   divCardTitle.style.color = 'white';
   divCardTitle.style.left = '5%';
   divCardTitle.style.position = 'absolute';
@@ -54,9 +54,9 @@ const drawSquareDefault = (
   divCardTitle.innerText = squareData.cardName;
   divFrame.appendChild(divCardTitle);
   //
-  // apple message
+  // apple title
   divAppleTitle = document.createElement('div');
-  divAppleTitle.id = `divMessageApple_${squareData.sysId}`;
+  divAppleTitle.id = `divAppleTitle_${squareData.sysId}`;
   divAppleTitle.style.color = 'white';
   divAppleTitle.className = 'whiteText';
   divAppleTitle.style.left = '5%';
@@ -68,20 +68,21 @@ const drawSquareDefault = (
   divFrame.appendChild(divAppleTitle);
   //
   // apple bar
-  divApple = document.createElement('div');
-  divApple.id = `divApple_${squareData.sysId}`;
-  divApple.classList.add('gojira');
-  divApple.style.backgroundColor = '#000000';
-  divApple.style.height = '5%';
-  divApple.style.left = '5%';
-  divApple.style.position = 'absolute';
-  divApple.style.top = '85%';
-  divApple.style.width = '26%';
-  divFrame.appendChild(divApple);
+  divAppleBar = document.createElement('div');
+  divAppleBar.id = `divAppleBar_${squareData.sysId}`;
+  divAppleBar.style.backgroundColor = '#000000';
+  divAppleBar.style.height = '5%';
+  divAppleBar.style.left = '5%';
+  divAppleBar.style.position = 'absolute';
+  divAppleBar.style.top = '85%';
+  divAppleBar.style.width = '26%';
+  divAppleBar.style.transitionDuration = '500ms';
+  divAppleBar.style.transitionProperty = 'background-color, height, top';
+  divFrame.appendChild(divAppleBar);
   //
-  // banana message
+  // banana title
   divBananaTitle = document.createElement('div');
-  divBananaTitle.id = `divMessageBanana_${squareData.sysId}`;
+  divBananaTitle.id = `divBananaTitle_${squareData.sysId}`;
   divBananaTitle.style.color = 'white';
   divBananaTitle.style.left = '37%';
   divBananaTitle.style.position = 'absolute';
@@ -92,20 +93,21 @@ const drawSquareDefault = (
   divFrame.appendChild(divBananaTitle);
   //
   // banana bar
-  divBanana = document.createElement('div');
-  divBanana.id = `divBanana_${squareData.sysId}`;
-  divBanana.classList.add('gojira');
-  divBanana.style.backgroundColor = '#000000';
-  divBanana.style.height = '5%';
-  divBanana.style.left = '37%';
-  divBanana.style.position = 'absolute';
-  divBanana.style.top = '85%';
-  divBanana.style.width = '26%';
-  divFrame.appendChild(divBanana);
+  divBananaBar = document.createElement('div');
+  divBananaBar.id = `divBananaBar_${squareData.sysId}`;
+  divBananaBar.style.backgroundColor = '#000000';
+  divBananaBar.style.height = '5%';
+  divBananaBar.style.left = '37%';
+  divBananaBar.style.position = 'absolute';
+  divBananaBar.style.top = '85%';
+  divBananaBar.style.width = '26%';
+  divBananaBar.style.transitionDuration = '500ms';
+  divBananaBar.style.transitionProperty = 'background-color, height, top';
+  divFrame.appendChild(divBananaBar);
   //
-  // carrot message
+  // carrot title
   divCarrotTitle = document.createElement('div');
-  divCarrotTitle.id = `divMessageCarrot_${squareData.sysId}`;
+  divCarrotTitle.id = `divCarrotTitle_${squareData.sysId}`;
   divCarrotTitle.style.color = 'white';
   divCarrotTitle.style.left = '69%';
   divCarrotTitle.style.position = 'absolute';
@@ -116,16 +118,17 @@ const drawSquareDefault = (
   divFrame.appendChild(divCarrotTitle);
   //
   // carrot bar
-  divCarrot = document.createElement('div');
-  divCarrot.id = `divCarrot_${squareData.sysId}`;
-  divCarrot.classList.add('gojira');
-  divCarrot.style.backgroundColor = '#000000';
-  divCarrot.style.height = '5%';
-  divCarrot.style.left = '69%';
-  divCarrot.style.position = 'absolute';
-  divCarrot.style.top = '85%';
-  divCarrot.style.width = '26%';
-  divFrame.appendChild(divCarrot);
+  divCarrotBar = document.createElement('div');
+  divCarrotBar.id = `divCarrotBar_${squareData.sysId}`;
+  divCarrotBar.style.backgroundColor = '#000000';
+  divCarrotBar.style.height = '5%';
+  divCarrotBar.style.left = '69%';
+  divCarrotBar.style.position = 'absolute';
+  divCarrotBar.style.top = '85%';
+  divCarrotBar.style.transitionDuration = '500ms';
+  divCarrotBar.style.transitionProperty = 'background-color, height, top';
+  divCarrotBar.style.width = '26%';
+  divFrame.appendChild(divCarrotBar);
   //
   return divFrame;
 };
@@ -152,73 +155,73 @@ const updateStats = (
   //
   let divFrame: HTMLDivElement | null = null;
   //
-  let divApple: HTMLDivElement | null = null;
-  let divAppleHeight = 0;
-  let divAppleTop = 0;
+  let divAppleBar: HTMLDivElement | null = null;
+  let divAppleBarHeight = 0;
+  let divAppleBarTop = 0;
   //
-  let divBanana: HTMLDivElement | null = null;
-  let divBananaHeight = 0;
-  let divBananaTop = 0;
+  let divBananaBar: HTMLDivElement | null = null;
+  let divBananaBarHeight = 0;
+  let divBananaBarTop = 0;
   //
-  let divCarrot: HTMLDivElement | null = null;
-  let divCarrotHeight = 0;
-  let divCarrotTop = 0;
+  let divCarrotBar: HTMLDivElement | null = null;
+  let divCarrotBarHeight = 0;
+  let divCarrotBarTop = 0;
   //
   let targetColor = '';
   //
   divFrame = <HTMLDivElement>document.getElementById(`divFrame_${sysId}`);
   if (divFrame !== null) {
     //
-    divApple = <HTMLDivElement>document.getElementById(`divApple_${sysId}`);
-    if (divApple !== null) {
+    divAppleBar = <HTMLDivElement>document.getElementById(`divAppleBar_${sysId}`);
+    if (divAppleBar !== null) {
       // default big blue bar means there was a null
-      divAppleHeight = 70;
-      divAppleTop = 20;
+      divAppleBarHeight = 70;
+      divAppleBarTop = 20;
       targetColor = 'blue';
       if (appleFloat !== null) {
         // calculate size and color
-        divAppleHeight = Math.ceil(70 * appleFloat);
-        divAppleTop = 90 - divAppleHeight;
+        divAppleBarHeight = Math.ceil(70 * appleFloat);
+        divAppleBarTop = 90 - divAppleBarHeight;
         targetColor = calculateColor(appleFloat);
       }
-      divApple.style.backgroundColor = targetColor;
-      divApple.style.height = `${divAppleHeight}%`;
-      divApple.style.top = `${divAppleTop}%`;
+      divAppleBar.style.backgroundColor = targetColor;
+      divAppleBar.style.height = `${divAppleBarHeight}%`;
+      divAppleBar.style.top = `${divAppleBarTop}%`;
     }
     //
-    divBanana = <HTMLDivElement>document.getElementById(`divBanana_${sysId}`);
-    if (divBanana !== null) {
+    divBananaBar = <HTMLDivElement>document.getElementById(`divBananaBar_${sysId}`);
+    if (divBananaBar !== null) {
       // default big blue bar means there was a null
-      divBananaHeight = 70;
-      divBananaTop = 20;
+      divBananaBarHeight = 70;
+      divBananaBarTop = 20;
       targetColor = 'blue';
       if (bananaFloat !== null) {
         // calculate size and color
-        divBananaHeight = Math.ceil(70 * bananaFloat);
-        divBananaTop = 90 - divBananaHeight;
+        divBananaBarHeight = Math.ceil(70 * bananaFloat);
+        divBananaBarTop = 90 - divBananaBarHeight;
         targetColor = calculateColor(bananaFloat);
       }
-      divBanana.style.backgroundColor = targetColor;
-      divBanana.style.height = `${divBananaHeight}%`;
-      divBanana.style.top = `${divBananaTop}%`;
+      divBananaBar.style.backgroundColor = targetColor;
+      divBananaBar.style.height = `${divBananaBarHeight}%`;
+      divBananaBar.style.top = `${divBananaBarTop}%`;
     }
     //
-    divCarrot = <HTMLDivElement>document.getElementById(`divCarrot_${sysId}`);
-    if (divCarrot !== null) {
+    divCarrotBar = <HTMLDivElement>document.getElementById(`divCarrotBar_${sysId}`);
+    if (divCarrotBar !== null) {
       // default big blue bar means there was a null
-      divCarrotHeight = 70;
-      divCarrotTop = 20;
+      divCarrotBarHeight = 70;
+      divCarrotBarTop = 20;
       targetColor = 'blue';
       if (carrotFloat !== null) {
         // calculate size and color
-        divCarrotHeight = Math.ceil(70 * carrotFloat);
-        divCarrotTop = 90 - divCarrotHeight;
+        divCarrotBarHeight = Math.ceil(70 * carrotFloat);
+        divCarrotBarTop = 90 - divCarrotBarHeight;
         targetColor = calculateColor(carrotFloat);
       }
+      divCarrotBar.style.backgroundColor = targetColor;
+      divCarrotBar.style.height = `${divCarrotBarHeight}%`;
+      divCarrotBar.style.top = `${divCarrotBarTop}%`;
     }
-    divCarrot.style.backgroundColor = targetColor;
-    divCarrot.style.height = `${divCarrotHeight}%`;
-    divCarrot.style.top = `${divCarrotTop}%`;
   }
 };
 const createNumberNull = () => {
