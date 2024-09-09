@@ -20,7 +20,7 @@ const drawSquareDefault = (
   let fontSize = 0;
   //
   // calculate font size
-  fontSize = Math.ceil(squareData.squareSide * 0.1);
+  fontSize = Math.ceil(squareData.squareSide * 0.07);
   //
   //
   // the square div that contains everything and is returned at the end of the function
@@ -32,11 +32,9 @@ const drawSquareDefault = (
   divFrame.style.width = `${squareData.squareSide}px`;
   //
   // black background
-  // i am using a black square to demonstrate the info placement more clearly
-  // this does not have to be a style rule for all overlays
   divBlack = document.createElement('div');
   divBlack.id = `divBlack_${squareData.sysId}`;
-  divBlack.className = 'blackBackground';
+  divBlack.style.backgroundColor = 'black';
   divBlack.style.height = '100%';
   divBlack.style.left = '0%';
   divBlack.style.position = 'absolute';
@@ -47,7 +45,7 @@ const drawSquareDefault = (
   // card title
   divCardTitle = document.createElement('div');
   divCardTitle.id = `divTitle_${squareData.sysId}`;
-  divCardTitle.className = 'whiteText';
+  divCardTitle.style.color = 'white';
   divCardTitle.style.left = '5%';
   divCardTitle.style.position = 'absolute';
   divCardTitle.style.top = '2%';
@@ -59,6 +57,7 @@ const drawSquareDefault = (
   // apple message
   divAppleTitle = document.createElement('div');
   divAppleTitle.id = `divMessageApple_${squareData.sysId}`;
+  divAppleTitle.style.color = 'white';
   divAppleTitle.className = 'whiteText';
   divAppleTitle.style.left = '5%';
   divAppleTitle.style.position = 'absolute';
@@ -83,7 +82,7 @@ const drawSquareDefault = (
   // banana message
   divBananaTitle = document.createElement('div');
   divBananaTitle.id = `divMessageBanana_${squareData.sysId}`;
-  divBananaTitle.className = 'whiteText';
+  divBananaTitle.style.color = 'white';
   divBananaTitle.style.left = '37%';
   divBananaTitle.style.position = 'absolute';
   divBananaTitle.style.top = '92%';
@@ -107,7 +106,7 @@ const drawSquareDefault = (
   // carrot message
   divCarrotTitle = document.createElement('div');
   divCarrotTitle.id = `divMessageCarrot_${squareData.sysId}`;
-  divCarrotTitle.className = 'whiteText';
+  divCarrotTitle.style.color = 'white';
   divCarrotTitle.style.left = '69%';
   divCarrotTitle.style.position = 'absolute';
   divCarrotTitle.style.top = '92%';
@@ -146,54 +145,96 @@ const calculateColor = (
 };
 const updateStats = (
   sysId: string,
-  appleFloat: number,
-  bananaFloat: number,
-  carrotFloat: number,
+  appleFloat: number | null,
+  bananaFloat: number | null,
+  carrotFloat: number | null,
 ) => {
   //
   let divFrame: HTMLDivElement | null = null;
+  //
+  let divApple: HTMLDivElement | null = null;
   let divAppleHeight = 0;
   let divAppleTop = 0;
+  //
+  let divBanana: HTMLDivElement | null = null;
   let divBananaHeight = 0;
   let divBananaTop = 0;
+  //
+  let divCarrot: HTMLDivElement | null = null;
   let divCarrotHeight = 0;
   let divCarrotTop = 0;
-  let divTarget: HTMLDivElement | null = null;
+  //
+  let targetColor = '';
   //
   divFrame = <HTMLDivElement>document.getElementById(`divFrame_${sysId}`);
   if (divFrame !== null) {
     //
-    divAppleHeight = Math.ceil(70 * appleFloat);
-    divAppleTop = 90 - divAppleHeight;
-    divTarget = <HTMLDivElement>document.getElementById(`divApple_${sysId}`);
-    divTarget.style.height = `${divAppleHeight}%`;
-    divTarget.style.top = `${divAppleTop}%`;
-    divTarget.style.backgroundColor = calculateColor(appleFloat);
+    divApple = <HTMLDivElement>document.getElementById(`divApple_${sysId}`);
+    if (divApple !== null) {
+      // default big blue bar means there was a null
+      divAppleHeight = 70;
+      divAppleTop = 20;
+      targetColor = 'blue';
+      if (appleFloat !== null) {
+        // calculate size and color
+        divAppleHeight = Math.ceil(70 * appleFloat);
+        divAppleTop = 90 - divAppleHeight;
+        targetColor = calculateColor(appleFloat);
+      }
+      divApple.style.backgroundColor = targetColor;
+      divApple.style.height = `${divAppleHeight}%`;
+      divApple.style.top = `${divAppleTop}%`;
+    }
     //
-    divBananaHeight = Math.ceil(70 * bananaFloat);
-    divBananaTop = 90 - divBananaHeight;
-    divTarget = <HTMLDivElement>document.getElementById(`divBanana_${sysId}`);
-    divTarget.style.height = `${divBananaHeight}%`;
-    divTarget.style.top = `${divBananaTop}%`;
-    divTarget.style.backgroundColor = calculateColor(bananaFloat);
+    divBanana = <HTMLDivElement>document.getElementById(`divBanana_${sysId}`);
+    if (divBanana !== null) {
+      // default big blue bar means there was a null
+      divBananaHeight = 70;
+      divBananaTop = 20;
+      targetColor = 'blue';
+      if (bananaFloat !== null) {
+        // calculate size and color
+        divBananaHeight = Math.ceil(70 * bananaFloat);
+        divBananaTop = 90 - divBananaHeight;
+        targetColor = calculateColor(bananaFloat);
+      }
+      divBanana.style.backgroundColor = targetColor;
+      divBanana.style.height = `${divBananaHeight}%`;
+      divBanana.style.top = `${divBananaTop}%`;
+    }
     //
-    divCarrotHeight = Math.ceil(70 * carrotFloat);
-    divCarrotTop = 90 - divCarrotHeight;
-    divTarget = <HTMLDivElement>document.getElementById(`divCarrot_${sysId}`);
-    divTarget.style.height = `${divCarrotHeight}%`;
-    divTarget.style.top = `${divCarrotTop}%`;
-    divTarget.style.backgroundColor = calculateColor(carrotFloat);
+    divCarrot = <HTMLDivElement>document.getElementById(`divCarrot_${sysId}`);
+    if (divCarrot !== null) {
+      // default big blue bar means there was a null
+      divCarrotHeight = 70;
+      divCarrotTop = 20;
+      targetColor = 'blue';
+      if (carrotFloat !== null) {
+        // calculate size and color
+        divCarrotHeight = Math.ceil(70 * carrotFloat);
+        divCarrotTop = 90 - divCarrotHeight;
+        targetColor = calculateColor(carrotFloat);
+      }
+    }
+    divCarrot.style.backgroundColor = targetColor;
+    divCarrot.style.height = `${divCarrotHeight}%`;
+    divCarrot.style.top = `${divCarrotTop}%`;
   }
+};
+const createNumberNull = () => {
+  if (Math.random() > 0.90) {
+    return null;
+  }
+  return Math.random();
 };
 const actionRandomize = () => {
   //
-  const statApple = Math.random();
-  const statBanana = Math.random();
-  const statCarrot = Math.random();
+  const statApple = createNumberNull();
+  const statBanana = createNumberNull();
+  const statCarrot = createNumberNull();
   //
-  updateStats('abcdefg', statApple, statBanana, statCarrot);
-  updateStats('hijklmnop', statApple, statBanana, statCarrot);
-  console.log('beep');
+  updateStats('abcdefgh', statApple, statBanana, statCarrot);
+  updateStats('ijklmnop', statApple, statBanana, statCarrot);
 };
 const addEventToRandomize = () => {
   //
@@ -216,7 +257,7 @@ const buildSquaresEmpty = () => {
     reportBig = drawSquareDefault({
       cardName: 'div_card_maker',
       squareSide: 1800,
-      sysId: 'abcdefg',
+      sysId: 'abcdefgh',
     });
     reportBig.style.left = '100px';
     reportBig.style.top = '100px';
@@ -226,7 +267,7 @@ const buildSquaresEmpty = () => {
     reportSmall = drawSquareDefault({
       cardName: 'div_card_maker',
       squareSide: 150,
-      sysId: 'hijklmnop',
+      sysId: 'ijklmnop',
     });
     reportSmall.style.left = '2000px';
     reportSmall.style.top = '100px';

@@ -1,40 +1,40 @@
 build_html_win () {
   #
-  echo '<html lang="en">' > index.html
-  echo '<head>' >> index.html
-  echo '  <meta charset="UTF-8">' >> index.html
-  echo '  <meta name="viewport" content="width=device-width, initial-scale=1.0">' >> index.html
-  echo '  <title>div_card_maker</title>' >> index.html
-  echo '  <style>' >> index.html
+  echo '<html lang="en">' > div_card_maker.html
+  echo '<head>' >> div_card_maker.html
+  echo '  <meta charset="UTF-8">' >> div_card_maker.html
+  echo '  <meta name="viewport" content="width=device-width, initial-scale=1.0">' >> div_card_maker.html
+  echo '  <title>div_card_maker</title>' >> div_card_maker.html
+  echo '  <style>' >> div_card_maker.html
   #
   #
-  cat index.css >> index.html
+  cat index.css >> div_card_maker.html
   #
   #
-  echo '  </style>' >> index.html
-  echo '</head>' >> index.html
-  echo '<body>' >> index.html
+  echo '  </style>' >> div_card_maker.html
+  echo '</head>' >> div_card_maker.html
+  echo '<body>' >> div_card_maker.html
   #
   #
-  cat basic.html >> index.html
+  cat basic.html >> div_card_maker.html
   #
   #
-  echo '    <script>' >> index.html
+  echo '    <script>' >> div_card_maker.html
   #
   #
   # add javascript, replacing four spaces with two in javascript
-  sed 's/    /  /g' index.js >> index.html
+  sed 's/    /  /g' index.js >> div_card_maker.html
   #
   #
-  echo '     </script>' >> index.html
-  echo '</body>' >> index.html
-  echo '</html>' >> index.html
+  echo '     </script>' >> div_card_maker.html
+  echo '</body>' >> div_card_maker.html
+  echo '</html>' >> div_card_maker.html
 }
 
 build_html_lose () {
-  echo '<html>' > index.html
-  echo '  <h1>something went wrong</h1>' >> index.html
-  echo '</html>' >> index.html
+  echo '<html>' > div_card_maker.html
+  echo '  <h1>something went wrong</h1>' >> div_card_maker.html
+  echo '</html>' >> div_card_maker.html
 }
 
 # lint typescript code

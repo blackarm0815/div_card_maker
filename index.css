@@ -1,0 +1,10 @@
+#randomize {
+    position: absolute;
+    left: 2000px;
+    top: 350px;
+}
+
+.gojira {
+  transition-duration: 500ms;
+  transition-property: background-color, height, top;
+}
