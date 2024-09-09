@@ -1,5 +1,5 @@
 build_html_win () {
-  #html
+  #
   echo '<html lang="en">' > index.html
   echo '<head>' >> index.html
   echo '  <meta charset="UTF-8">' >> index.html
@@ -7,42 +7,25 @@ build_html_win () {
   echo '  <title>div_card_maker</title>' >> index.html
   echo '  <style>' >> index.html
   #
-  echo '    .blackBackground {' >> index.html
-  echo '      background-color: #000000;' >> index.html
-  echo '    }' >> index.html
   #
-  echo '    .whiteText {' >> index.html
-  echo '      color: #ffffff;' >> index.html
-  echo '    }' >> index.html
+  cat index.css >> index.html
   #
-  echo '    .spectrumA {' >> index.html
-  echo '      background-color: #005c00;' >> index.html
-  echo '      color: #ffffff;' >> index.html
-  echo '    }' >> index.html
-  #
-  echo '    .spectrumB {' >> index.html
-  echo '      background-color: #999900;' >> index.html
-  echo '      color: #ffffff;' >> index.html
-  echo '    }' >> index.html
-  #
-  echo '    .spectrumC {' >> index.html
-  echo '      background-color: #bd5e00;' >> index.html
-  echo '      color: #ffffff;' >> index.html
-  echo '    }' >> index.html
-  #
-  echo '    .spectrumD {' >> index.html
-  echo '      background-color: #ad0000;' >> index.html
-  echo '      color: #ffffff;' >> index.html
-  echo '    }' >> index.html
   #
   echo '  </style>' >> index.html
   echo '</head>' >> index.html
   echo '<body>' >> index.html
-  echo '    <div id = 'holder_abcdefg'></div>' >> index.html
+  #
+  #
+  cat basic.html >> index.html
+  #
+  #
   echo '    <script>' >> index.html
+  #
+  #
   # add javascript, replacing four spaces with two in javascript
   sed 's/    /  /g' index.js >> index.html
-  # html
+  #
+  #
   echo '     </script>' >> index.html
   echo '</body>' >> index.html
   echo '</html>' >> index.html
